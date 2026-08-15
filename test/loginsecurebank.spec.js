@@ -23,5 +23,5 @@ test('Login with out username',async({page}) => {
     await page.getByPlaceholder('Enter password').click();
     await page.getByPlaceholder('Enter password').fill('bank_sauce');
     await page.getByTestId('login-submit-btn').click();
-    await page.waitForResponse
+    await expect(page.locator('body')).toContainText('Please enter your username.');
 });
