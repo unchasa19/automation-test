@@ -1,6 +1,6 @@
 import { test as setup, expect } from '@playwright/test';
 
-setup('Login successfully', async ({ page }) => {
+setup('Login save authentication state', async ({ page }) => {
     await page.goto('https://qaplayground.com/bank/login');
     await page.waitForURL('https://qaplayground.com/bank/login');
     await expect(page.locator('body')) .toContainText ("SecureBank");
@@ -15,5 +15,6 @@ setup('Login successfully', async ({ page }) => {
     await page.context().storageState({
     path: 'playwright/.auth/user.json'
   });
+});
 
 

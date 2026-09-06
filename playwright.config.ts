@@ -1,19 +1,25 @@
-import { defineConfig } from '@playwright/test';
-
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   reporter: 'html',
   use: {
     launchOptions: {
-      slowMo: 500
+      slowMo: 500,
     },
-  name: 'chromium',
-  use: {
-    ...devices['Desktop Chrome'],
+  },
+  projects: [
+    {
+      name: 'setup',
+      testMatch: /auth\.setup\.ts/,
+    },
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
         storageState: 'playwright/.auth/user.json',
       },
       dependencies: ['setup'],
     },
-  
+  ],
 });
 
