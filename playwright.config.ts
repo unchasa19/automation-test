@@ -6,7 +6,14 @@ export default defineConfig({
   use: {
     launchOptions: {
       slowMo: 500
-    }
-  }
+    },
+  name: 'chromium',
+  use: {
+    ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/user.json',
+      },
+      dependencies: ['setup'],
+    },
+  
 });
 
